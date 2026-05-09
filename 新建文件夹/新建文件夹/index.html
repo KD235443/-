@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给妈妈的母亲节祝福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "微软雅黑", sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255,255,255,0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 80%;
+            z-index: 10;
+        }
+        h1 {
+            color: #e63946;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .heart {
+            color: #e63946;
+            font-size: 30px;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ffb6c1;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>妈妈，母亲节快乐！</h1>
+        <p>
+            你先是你自己，然后才是我的妈妈。<br>
+            宇宙洪荒，生命浩瀚，只有你和我共享过心跳。<br>
+            谢谢你用一生的温柔，为我遮风挡雨。<br>
+            愿你永远平安健康，永远被温柔以待。<br>
+            妈妈，我爱你！
+        </p >
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        // 生成飘落的花瓣
+        function createPetals() {
+            const count = 30;
+            for (let i = 0; i < count; i++) {
+                const petal = document.createElement("div");
+                petal.classList.add("petal");
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                petal.style.animationDelay = `${Math.random() * 10}s`;
+                document.body.appendChild(petal);
+            }
+        }
+        createPetals();
+
+        // 支持URL参数自定义文案
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get("name") || "妈妈";
+        const msg = urlParams.get("msg") || "母亲节快乐，我爱你！";
+        document.querySelector("h1").innerText = `${name}，母亲节快乐！`;
+        document.querySelector("p").innerText = msg;
+    </script>
+</body>
+</html>
